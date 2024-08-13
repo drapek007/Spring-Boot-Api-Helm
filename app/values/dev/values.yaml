@@ -1,0 +1,25 @@
+replicaCount: 3
+
+ingress:
+  enabled: true
+  host: dev.yourdomain.com
+  paths:
+    - path: /api
+      port: 8080
+    - path: /logs
+      port: 8081
+    - path: /soap
+      port: 8082
+
+config:
+  jsonData: |
+    {
+      "environment": "development",
+      "debug": true
+    }
+
+environmentVariables:
+  SPRING_PROFILES_ACTIVE: "dev"
+
+args:
+  - "--spring.profiles.active=dev"

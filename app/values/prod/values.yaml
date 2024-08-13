@@ -1,0 +1,25 @@
+replicaCount: 5
+
+ingress:
+  enabled: true
+  host: prod.yourdomain.com
+  paths:
+    - path: /api
+      port: 8080
+    - path: /logs
+      port: 8081
+    - path: /soap
+      port: 8082
+
+config:
+  jsonData: |
+    {
+      "environment": "production",
+      "debug": false
+    }
+
+environmentVariables:
+  SPRING_PROFILES_ACTIVE: "prd"
+
+args:
+  - "--spring.profiles.active=prd"
